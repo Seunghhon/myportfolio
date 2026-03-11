@@ -1,6 +1,4 @@
 document.body.style="background-color: var(--bs-dark);transition: 0.5s;"
-const sun = "https://www.uplooder.net/img/image/55/7aa9993fc291bc170abea048589896cf/sun.svg";
-const moon = "https://www.uplooder.net/img/image/2/addf703a24a12d030968858e0879b11e/moon.svg"
 
 const section2 = document.querySelectorAll(".section-2 a");
 const section1 = document.querySelectorAll(".section-1 a");
@@ -8,7 +6,9 @@ const section1 = document.querySelectorAll(".section-1 a");
 var theme = "dark";
   const root = document.documentElement;
   const container = document.getElementsByClassName("theme-container")[0];
-  const themeIcon = document.getElementById("theme-icon");
+  const themeIconWrap = document.getElementById("theme-icon-wrap");
+  feather.replace();
+  themeIconWrap.querySelector('svg').style.stroke = '#ffffff';
   container.addEventListener("click", setTheme);
   function setTheme() {
     switch (theme) {
@@ -30,10 +30,12 @@ var theme = "dark";
     container.classList.remove("shadow-dark");
     setTimeout(() => {
       container.classList.add("shadow-light");
-      themeIcon.classList.remove("change");
+      themeIconWrap.classList.remove("change");
     }, 300);
-    themeIcon.classList.add("change");
-    themeIcon.src = sun;
+    themeIconWrap.innerHTML = '<i data-feather="sun"></i>';
+    feather.replace();
+    themeIconWrap.querySelector('svg').style.stroke = '#555555';
+    themeIconWrap.classList.add('change');
     for (var i = 0; i < document.getElementsByTagName("h2").length; i++) document.getElementsByTagName("h2")[i].style.color = "#000000";
     document.getElementsByClassName("Avatar")[0].style.border = "5px solid #ffffff";
     //document.getElementsByTagName("u")[0].style.color = "#000000";
@@ -61,10 +63,12 @@ var theme = "dark";
     container.classList.remove("shadow-light");
     setTimeout(() => {
       container.classList.add("shadow-dark");
-      themeIcon.classList.remove("change");
+      themeIconWrap.classList.remove("change");
     }, 300);
-    themeIcon.classList.add("change");
-    themeIcon.src = moon;
+    themeIconWrap.innerHTML = '<i data-feather="moon"></i>';
+    feather.replace();
+    themeIconWrap.querySelector('svg').style.stroke = '#ffffff';
+    themeIconWrap.classList.add('change');
     for (var i = 0; i < document.getElementsByTagName("h2").length; i++) document.getElementsByTagName("h2")[i].style.color = "#ffffff";
     document.getElementsByClassName("Avatar")[0].style.border = "5px solid #ffffff";
     document.getElementsByTagName("u")[0].style.color = "#9c9c9c";
